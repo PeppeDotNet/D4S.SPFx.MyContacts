@@ -1,0 +1,39 @@
+.myContacts {
+  .container {
+    //max-width: 700px;
+    margin: 0px auto;
+    //box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    clear: both;
+    min-height: 300px;
+  }
+  .row {
+    padding: 20px;
+  }
+  .contactList {
+    min-height: 300px;
+  }
+  .spinner {
+    top: 120px;
+    position: absolute;
+    left: 50%;
+    margin-left: -95px;
+  }
+  .contact {
+    float: left;
+    margin: 5px;
+  }
+  .button {
+    text-decoration: none;
+  }
+  .clearBoth {
+    clear: both;
+  }
+  .contactsNav {
+    width: 31px;
+    height: 53px;
+    position: absolute;
+    top: 90px;
+    cursor: pointer;
+    z-index: 10;
+  }
+}

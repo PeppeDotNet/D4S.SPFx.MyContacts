@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "8466ed85-3b44-4808-8637-06bb7fa40847",
+  "alias": "MyContacts",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "8466ed85-3b44-4808-8637-06bb7fa40847",
+    "group": { "default": "Dev4Side components" },
+    "title": { "default": "My contacts - Large" },
+    "description": { "default": "Web part for viewing your personal contacts" },
+    "officeFabricIconFontName": "Group",
+    "properties": {
+      "pageSize": 6,
+      "showPicture": true,
+      "showPhone": true,
+      "pictureSize": 4
+    }
+  },{
+    "groupId": "8466ed85-3b44-4808-8637-06bb7fa40847",
+    "group": { "default": "Dev4Side components" },
+    "title": { "default": "My contacts - Small" },
+    "description": { "default": "Web part for viewing your personal contacts, with small icons" },
+    "officeFabricIconFontName": "Group",
+    "properties": {
+      "pageSize": 12,
+      "showPicture": true,
+      "showPhone": true,
+      "pictureSize": 2
+    }
+  }]
+}
