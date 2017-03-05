@@ -1,8 +1,8 @@
 {
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
 
-  "id": "8466ed85-3b44-4808-8637-06bb7fa40847",
-  "alias": "MyContacts",
+  "id": "ffc8d80d-f073-4e0d-9056-80dc88cc1a10",
+  "alias": "MyContactsWebPart",
   "componentType": "WebPart",
   "version": "0.0.1",
   "manifestVersion": 2,

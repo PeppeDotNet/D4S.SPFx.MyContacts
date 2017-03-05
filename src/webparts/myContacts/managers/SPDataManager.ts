@@ -1,6 +1,6 @@
 import { IDataManager } from './Managers';
 import * as Model from '../model/Model';
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import pnp from 'sp-pnp-js';
 
 export class SPDataManager implements IDataManager {

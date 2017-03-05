@@ -1,5 +1,5 @@
 import * as Model from '../model/Model';
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
 export interface IDataManager {
   SPContext: IWebPartContext;

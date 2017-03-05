@@ -1,7 +1,8 @@
 {
   "@microsoft/generator-sharepoint": {
     "libraryName": "d-4-s-sp-fx-my-contacts",
-    "libraryId": "caa07132-4f35-44cc-b162-1b919b4867dd",
-    "framework": "react"
+    "framework": "react",
+    "version": "1.0.0",
+    "libraryId": "79640ea4-12ba-40d9-8373-8a4c12fcba04"
   }
 }

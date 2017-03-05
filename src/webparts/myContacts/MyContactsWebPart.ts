@@ -1,17 +1,18 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart,
-  IPropertyPaneSettings,
+  IPropertyPaneConfiguration,
   IWebPartContext,
   PropertyPaneSlider,
   PropertyPaneToggle,
   PropertyPaneDropdown,
   IPropertyPaneDropdownOption } from '@microsoft/sp-webpart-base';
-import { EnvironmentType } from '@microsoft/sp-client-base';
+import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import * as strings from 'myContactsStrings';
 import MyContacts, { IMyContactsProps } from './components/MyContacts';
 import { IMyContactsWebPartProps } from './IMyContactsWebPartProps';
-import { Dictionary } from '../../utilities/dictionary';
+import { Dictionary } from '../../utilities/Dictionary';
 import * as Managers from './managers/Managers';
 
 export default class MyContactsWebPart extends BaseClientSideWebPart<IMyContactsWebPartProps> {
@@ -24,14 +25,9 @@ export default class MyContactsWebPart extends BaseClientSideWebPart<IMyContacts
   private _contactLists: Array<IPropertyPaneDropdownOption>;
   private _pictureSizes: Array<IPropertyPaneDropdownOption>;
 
-  public constructor(context: IWebPartContext) {
-    super(context);
-
-    this._dataManger = this._managers[this.context.environment.type.toString()];
-    this._dataManger.SPContext = this.context;
-  }
-
   public onInit(): Promise<void> {
+    this._dataManger = this._managers[Environment.type.toString()];
+    this._dataManger.SPContext = this.context;
     this._dataManger.GetContactLists().then((results) => {
       this._contactLists = new Array<IPropertyPaneDropdownOption>();
       results.forEach(element => {
@@ -47,8 +43,12 @@ export default class MyContactsWebPart extends BaseClientSideWebPart<IMyContacts
     this._pictureSizes.push({ key: 4, text: "large" });
     this._pictureSizes.push({ key: 5, text: "extraLarge" });
 
-    return Promise.resolve();
+    return super.onInit();
   };
+
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
 
   public render(): void {
     this._dataManger.ListId = this.properties.listId;
@@ -71,7 +71,7 @@ export default class MyContactsWebPart extends BaseClientSideWebPart<IMyContacts
     super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
   };
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
@@ -84,7 +84,7 @@ export default class MyContactsWebPart extends BaseClientSideWebPart<IMyContacts
             }, {
               groupName: strings.VisualizationGroup,
               groupFields: [
-                PropertyPaneDropdown('pictureSize', { label: strings.VisualizationGroupImageSize, isDisabled: false, options: this._pictureSizes }),
+                PropertyPaneDropdown('pictureSize', { label: strings.VisualizationGroupImageSize, disabled: false, options: this._pictureSizes }),
                 PropertyPaneToggle("showPhone", { label: strings.VisualizationGroupShowPhone, disabled: false })
               ]
             }
@@ -95,7 +95,7 @@ export default class MyContactsWebPart extends BaseClientSideWebPart<IMyContacts
           groups: [{
             groupName: strings.ConnectionGroup,
             groupFields: [
-              PropertyPaneDropdown('listId', { label: strings.ConnectionGroupListName, isDisabled: false, options: this._contactLists })
+              PropertyPaneDropdown('listId', { label: strings.ConnectionGroupListName, disabled: false, options: this._contactLists })
             ]
           }]
         }

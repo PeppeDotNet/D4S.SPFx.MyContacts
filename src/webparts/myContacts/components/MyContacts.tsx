@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
 import styles from '../MyContacts.module.scss';
 import { IMyContactsWebPartProps } from '../IMyContactsWebPartProps';

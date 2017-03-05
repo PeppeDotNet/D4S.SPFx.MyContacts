@@ -1,6 +1,6 @@
 import * as Model from '../model/Model';
 import { IDataManager } from './Managers';
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
 export class MockDataManager implements IDataManager {
 
